@@ -42,12 +42,15 @@ int main() {
 	pile2 = (stack*)calloc(1, sizeof(stack));
 	pile3 = (stack*)calloc(1, sizeof(stack));
 	char a[N], path[30], path2[30];
+	memset(path, 0, sizeof(path));
+	memset(path2, 0, sizeof(path2));
 	int i, j = 0;
 	printf("Moi ban nhap file chua day dau ngoac:");
 	gets(path);
 	standardize(path, path2);
 	if (check_file(path2) == 1) {
-		printf("404 Not Found");
+		printf("file khong ton tai!");
+		getchar();
 		return 1;
 	}
 	else {
@@ -59,8 +62,9 @@ int main() {
 		free(pile1);
 		free(pile2);
 		free(pile3);
-		printf("\nMo file BRACKET.OUT de xem ket qua");
+		printf("\nThuc hien xong. Hay kiem tra file BRACKET.OUT trong o D:");
 	}
+	getchar();
 	return 0;
 }
 int standardize(char *path, char *path2)
@@ -77,8 +81,7 @@ int standardize(char *path, char *path2)
 		j++;
 	}
 }
-int read(char *path, char *buffer)
-{
+int read(char *path, char *buffer) {
 	int i = 0;
 	int c;
 	FILE *file;
@@ -93,8 +96,7 @@ int read(char *path, char *buffer)
 	}
 	return 0;
 }
-int check_file(char *path)
-{
+int check_file(char *path) {
 	FILE *file;
 	file = fopen(path, "r");
 	if (file) {
